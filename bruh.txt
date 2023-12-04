@@ -1,0 +1,41 @@
+package main
+import (
+    "fmt"
+    "strings"
+    "math"
+)
+func countWinningNumbers(textW []string, textN []string) int{
+    
+    count := 0
+    for _,wC := range(textW){
+        for _,nC := range(textN){
+            if wC != "" && wC != " " && wC == nC {
+                fmt.Println(nC)
+                count++
+            }
+        } 
+    }
+    fmt.Println("***")
+    fmt.Println(count)
+    return count
+}
+ 
+
+func main() {
+  text := "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53"
+  
+  numbers := text[8:]
+  numberStrings := strings.Split(numbers,"|")
+  winningNumbers := strings.Split(numberStrings[0]," ")
+  myNumbers := strings.Split(numberStrings[1]," ")
+//   for _,wC := range(winningNumbers){
+//   fmt.Println(wC)
+//   fmt.Println(len(winningNumbers))
+//   }
+  winningNumbersinRow := countWinningNumbers(winningNumbers,myNumbers)
+  
+  toSum := math.Pow(2, float64(winningNumbersinRow)-1)
+  
+  fmt.Println("-----")
+  fmt.Println(toSum)
+}
